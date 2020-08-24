@@ -52,12 +52,12 @@ public class UserController {
 
     /**
      * 取得一個使用者
-     * @param userId 使用者Id
-     * @return true = 成功 , false = 失敗
+     * @param account 使用者Id
+     * @return UserResponse 使用者資料vo
      */
     @GetMapping("get")
-    public ResponseEntity<UserResponse> getOne(@RequestParam int userId){
-        return userService.getOne(userId);
+    public ResponseEntity<UserResponse> getOne(@RequestParam String account){
+        return userService.getOne(account);
     }
 
     /**

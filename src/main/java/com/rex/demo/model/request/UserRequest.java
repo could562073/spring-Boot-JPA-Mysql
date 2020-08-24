@@ -1,7 +1,5 @@
 package com.rex.demo.model.request;
 
-import com.rex.demo.entity.UserEntity;
-
 /**
  * 使用者請求封裝類(VO)
  *

@@ -40,10 +40,10 @@ public interface IUserService {
     /**
      * 取得一個使用者
      *
-     * @param userId 使用者Id
-     * @return true = 成功 , false = 失敗
+     * @param account 使用者account
+     * @return UserResponse 使用者資料vo
      */
-    ResponseEntity<UserResponse> getOne(int userId);
+    ResponseEntity<UserResponse> getOne(String account);
 
     /**
      * 取得使用者列表

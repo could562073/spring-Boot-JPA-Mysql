@@ -16,7 +16,7 @@ public class ExceptionAdvice {
     public ResponseEntity<Object> defaultErrorHandler(Exception e) {
         // 可以根據 exception 的 type 來做不同處理
         if (e instanceof IllegalArgumentException) {
-            return ResponseEntity.status(500).contentType(MediaType.APPLICATION_JSON).body(e.getMessage());
+            return ResponseEntity.status(HttpStatus.BAD_REQUEST).contentType(MediaType.APPLICATION_JSON).body(e.getMessage());
         } else {
             return ResponseEntity.status(HttpStatus.FORBIDDEN).body(e.getMessage());
         }

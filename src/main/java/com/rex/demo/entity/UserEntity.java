@@ -12,7 +12,6 @@ import java.io.Serializable;
 @Entity
 @Table(name = "user")
 public class UserEntity implements Serializable {
-
     private static final long serialVersionUID = 1L;
 
     /** primary key */
@@ -39,12 +38,6 @@ public class UserEntity implements Serializable {
     /** 電話 */
     @Column(name = "phonenumber")
     private String phoneNumber;
-
-
-
-    public static long getSerialVersionUID() {
-        return serialVersionUID;
-    }
 
     public UserEntity() {
     }
@@ -105,13 +98,12 @@ public class UserEntity implements Serializable {
         this.phoneNumber = phoneNumber;
     }
 
-
     /**
-     *  使用者建置器內部類
+     * 使用者建置器內部類
      *
-     *  Builder pattern
-     *  優點: 提高建構時的彈性與可讀性
-     *  缺點: 程式碼變得更冗長
+     * Builder pattern impl
+     * 優點: 提高建構物件時的彈性與可讀性
+     * 缺點: 程式碼變得更冗長
      */
     public static final class Builder {
 
@@ -122,37 +114,27 @@ public class UserEntity implements Serializable {
         private String phoneNumber;
 
         public Builder setAccount(String account) {
-            if(!account.isEmpty()){
-                this.account = account;
-            }
+            this.account = account;
             return this;
         }
 
         public Builder setPassword(String password) {
-            if(!password.isEmpty()) {
-                this.password = password;
-            }
+            this.password = password;
             return this;
         }
 
         public Builder setUsername(String username) {
-            if(!username.isEmpty()) {
-                this.username = username;
-            }
+            this.username = username;
             return this;
         }
 
         public Builder setAddress(String address) {
-            if(!address.isEmpty()) {
-                this.address = address;
-            }
+            this.address = address;
             return this;
         }
 
         public Builder setPhoneNumber(String phoneNumber) {
-            if(!phoneNumber.isEmpty()) {
-                this.phoneNumber = phoneNumber;
-            }
+            this.phoneNumber = phoneNumber;
             return this;
         }
 
