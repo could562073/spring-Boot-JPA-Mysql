@@ -5,7 +5,13 @@ spring:
     password:
     driver-class-name: com.mysql.cj.jdbc.Driver
 
-# jpa setting
+  aop:
+    # 加入@EnableAspectJAutoProxy. (引入時已經預設為開啟)
+    auto: true
+    # 使用CGLIB來實現AOP的時候，需要配置spring.aop.proxy-target-class=true，否則預設使用的是標準Java的實現。
+    proxy-target-class: true
+
+  # jpa setting
   jpa:
     database-platform: org.hibernate.dialect.MySQL8Dialect
     hibernate:
