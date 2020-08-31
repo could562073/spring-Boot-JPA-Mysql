@@ -49,7 +49,7 @@ public class UserServiceImpl implements IUserService {
      * @return true = 成功 , false = 失敗
      */
     @Override
-    @Transactional(rollbackFor = Exception.class, propagation = Propagation.REQUIRED)
+    @Transactional(rollbackFor = RuntimeException.class, propagation = Propagation.REQUIRED, readOnly = false)
     public ResponseEntity<Boolean> add(UserRequest userRequest) {
         logger.info("UserRequestArgs[ account:{} , password:{} , username:{}, address:{}, phoneNumber:{} ]",
                 userRequest.getAccount(), userRequest.getPassword(), userRequest.getUsername(), userRequest.getAddress(), userRequest.getPhoneNumber());
@@ -78,7 +78,7 @@ public class UserServiceImpl implements IUserService {
      * @return true = 成功 , false = 失敗
      */
     @Override
-    @Transactional
+    @Transactional(rollbackFor = RuntimeException.class, propagation = Propagation.REQUIRED, readOnly = false)
     public ResponseEntity<Boolean> update(UserRequest userRequest) {
         logger.info("UserRequestArgs[ account:{} , password:{} , username:{}, address:{}, phoneNumber:{} ]",
                 userRequest.getAccount(), userRequest.getPassword(), userRequest.getUsername(), userRequest.getAddress(), userRequest.getPhoneNumber());
@@ -148,7 +148,7 @@ public class UserServiceImpl implements IUserService {
         List<UserEntity> userEntityList = userRepository.findAll();
         List<UserResponse> userResponseList = new ArrayList<>();
 
-        userEntityList.forEach(object -> userResponseList.add(UserResponse.valueOf(object)));
+        userEntityList.forEach(userEntity -> userResponseList.add(UserResponse.valueOf(userEntity)));
 
         return ResponseEntity.ok(userResponseList);
     }
